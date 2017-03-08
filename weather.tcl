@@ -50,7 +50,7 @@ proc pub_w {nick uhand handle chan input} {
     regsub -all "\n" $html "" html
     regexp {City Not Found} $html - nf
     if {[info exists nf]==1} {
-      putquick "PRIVMSG $chan :$input Not Found"
+      putquick "PRIVMSG $chan :Could not find $input"
       return 0
     }
 
@@ -88,7 +88,7 @@ proc pub_w {nick uhand handle chan input} {
 # // Wind Chill in MPH and KMH   
     regexp {Windchill</td>  <td>  <span class="nowrap"><b>(.*?)</b>&deg;F</span>  /  <span class="nowrap"><b>(.*?)</b>&deg;C</span>} $data - windcf windcc
 # // Pressure in inches and hPa   
-    regexp {Pressure</td><td>  <span class="nowrap"><b>(.*?)</b>&nbsp;in</span>  /  <span class="nowrap"><b>(.*?)</b>&nbsp;hPa</span>  <b>(.*?)</b>} $data - presi presh rifa    
+#    regexp {Pressure</td><td>  <span class="nowrap"><b>(.*?)</b>&nbsp;in</span>  /  <span class="nowrap"><b>(.*?)</b>&nbsp;hPa</span>  <b>(.*?)</b>} $data - presi presh rifa    
 # // Humidity Percentage   
     regexp {Humidity</td><td><b>(.*?)</b>} $data - hum
 # // Dew Point
@@ -137,9 +137,9 @@ proc color {temp} {
   set colorf [color $tempf]
   if {(([info exists windcf]==1)&&(abs($tempf - $windcf) > 1.0))&&($tempf > $windcf)} {
     set colorw [color $windcf]
-    putquick "PRIVMSG $chan :$loc: Temperature:$colorf ${tempf}ºF (${tempc}ºC)\003 · Windchill:$colorw ${windcf}ºF (${windcc}ºC)\003 · Conditions: $cond · Humidity: $hum · Wind: $windout · Pressure: ${presi}in (${presh}hPa) $rifa · Updated: $updated"
+    putquick "PRIVMSG $chan :$loc: Temperature:$colorf ${tempf}ºF (${tempc}ºC)\003 · Windchill:$colorw ${windcf}ºF (${windcc}ºC)\003 · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
   }  else {
-    putquick "PRIVMSG $chan :$loc: Temperature:$colorf ${tempf}ºF (${tempc}ºC)\003 · Conditions: $cond · Humidity: $hum · Wind: $windout · Pressure: ${presi}in (${presh}hPa) $rifa · Updated: $updated"
+    putquick "PRIVMSG $chan :$loc: Temperature:$colorf ${tempf}ºF (${tempc}ºC)\003 · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
   }
 }
 
