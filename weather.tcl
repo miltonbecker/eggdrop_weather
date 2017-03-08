@@ -71,6 +71,10 @@ proc pub_w {nick uhand handle chan input} {
     regsub -all "\<.*?\>" $updated "" updated
 
     regexp {Updated: <b>(.*?)Visibility</td} $html - data
+    if {[info exists data]==0} { 
+      putquick "PRIVMSG $chan : Weather for $loc is currently not available"
+      return 0
+    }
     
     regexp {Temperature</td>  <td>  <span class="nowrap"><b>(.*?)</b>&deg;F</span>  /  <span class="nowrap"><b>(.*?)</b>&deg;C</span>} $data - tempf tempc
     if {[info exists tempf]==0} { 
