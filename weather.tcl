@@ -109,6 +109,8 @@ proc pub_w {nick uhand handle chan input} {
   } 
   if {$windm==0} { 
     set windout "Calm"
+  } elseif {$windgm == "0.0" || $windgk == "0.0"} {
+    set windout "$windd @ ${windm}MPH (${windk}KPH)"
   } else {	
     set windout "$windd @ ${windm}MPH (${windk}KPH) gusting to ${windgm}MPH (${windgk}KPH)"
   }
