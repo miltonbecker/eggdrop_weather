@@ -135,9 +135,9 @@ proc color {temp} {
   set colorf [color $tempf]
   if {(([info exists windcf]==1)&&(abs($tempf - $windcf) > 1.0))&&($tempf > $windcf)} {
     set colorw [color $windcf]
-    putquick "PRIVMSG $chan :\00313$loc:\003 \002Temperature:\002$colorf ${tempf}F\003 (${tempc}C) - \002Windchill:\002$colorw ${windcf}F \00300(${windcc}C) - \002Humidity:\002 $hum - \002Wind:\002 $windout\- \002Pressure:\002 ${presi}in (${presh}hPa) $rifa - \002Conditions:\002 $cond - \002Updated:\002 $updated"
+    putquick "PRIVMSG $chan :$loc: Temperature:$colorf ${tempf}ºF (${tempc}ºC)\003 · Windchill:$colorw ${windcf}ºF (${windcc}ºC)\003 · Conditions: $cond · Humidity: $hum · Wind: $windout · Pressure: ${presi}in (${presh}hPa) $rifa · Updated: $updated"
   }  else {
-    putquick "PRIVMSG $chan :\00313$loc:\003 \002Temperature:\002$colorf ${tempf}F\003 (${tempc}C) - \002Humidity:\002 $hum - \002Wind:\002 $windout - \002Pressure:\002 ${presi}in (${presh}hPa) $rifa - \002Conditions:\002 $cond - \002Updated:\002 $updated"
+    putquick "PRIVMSG $chan :$loc: Temperature:$colorf ${tempf}ºF (${tempc}ºC)\003 · Conditions: $cond · Humidity: $hum · Wind: $windout · Pressure: ${presi}in (${presh}hPa) $rifa · Updated: $updated"
   }
 }
 
