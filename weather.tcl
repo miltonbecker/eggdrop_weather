@@ -141,9 +141,9 @@ proc color {temp} {
   #set colorf [color $tempf]
   if {(([info exists windcf]==1)&&(abs($tempf - $windcf) > 1.0))&&($tempf > $windcf)} {
     #set colorw [color $windcf]
-    putquick "PRIVMSG $chan :$loc: Temperature: ${tempf}ºF (${tempc}ºC) · Windchill: ${windcf}ºF (${windcc}ºC) · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
+    putquick "PRIVMSG $chan :$loc · Temperature: ${tempf}ºF (${tempc}ºC) · Windchill: ${windcf}ºF (${windcc}ºC) · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
   }  else {
-    putquick "PRIVMSG $chan :$loc: Temperature: ${tempf}ºF (${tempc}ºC) · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
+    putquick "PRIVMSG $chan :$loc · Temperature: ${tempf}ºF (${tempc}ºC) · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
   }
 }
 
