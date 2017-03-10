@@ -138,15 +138,13 @@ proc color {temp} {
 }
 
 # // Reverse ${tempf}/${tempc} and ${windcf}/${windcc} if you want metric as priority
-  set colorf [color $tempf]
+  #set colorf [color $tempf]
   if {(([info exists windcf]==1)&&(abs($tempf - $windcf) > 1.0))&&($tempf > $windcf)} {
-    set colorw [color $windcf]
-    putquick "PRIVMSG $chan :$loc: Temperature:$colorf ${tempf}ºF (${tempc}ºC)\003 · Windchill:$colorw ${windcf}ºF (${windcc}ºC)\003 · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
+    #set colorw [color $windcf]
+    putquick "PRIVMSG $chan :$loc: Temperature: ${tempf}ºF (${tempc}ºC) · Windchill: ${windcf}ºF (${windcc}ºC) · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
   }  else {
-    putquick "PRIVMSG $chan :$loc: Temperature:$colorf ${tempf}ºF (${tempc}ºC)\003 · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
+    putquick "PRIVMSG $chan :$loc: Temperature: ${tempf}ºF (${tempc}ºC) · Conditions: $cond · Humidity: $hum · Wind: $windout · Updated: $updated"
   }
 }
 
 putlog "Wunderground Weather Loaded"
-
-#\002Dew Point:\002 ${dewf}F (${dewc}C)
